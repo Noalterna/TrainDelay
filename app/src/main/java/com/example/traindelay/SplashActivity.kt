@@ -1,15 +1,18 @@
 package com.example.traindelay
 
 import android.content.Intent
+import android.graphics.drawable.LayerDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+
 
 class SplashActivity : AppCompatActivity() {
 
     private val SPLASH_TIME_OUT:Long = 300
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_splash)
 
         Handler().postDelayed({

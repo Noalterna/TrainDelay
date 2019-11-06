@@ -4,7 +4,7 @@
     <item>
         <bitmap
             android:src="@drawable/splash_logo"
-            android:gravity="center_vertical"
+            android:gravity="center"
             />
     </item>
 </layer-list>

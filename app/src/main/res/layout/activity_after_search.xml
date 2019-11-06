@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="164dp"
+        android:background="@color/colorPrimary"
+        android:padding="24dp"
+        >
+        <ImageButton
+            android:id="@+id/back_button"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/ic_arrow_back"
+            android:padding="2dp"
+            />
+
+        <ImageView
+            android:id="@+id/minitrain"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_alignLeft="@+id/back_button"
+            android:layout_alignTop="@id/chosen_start_station"
+            android:background="@drawable/mini_train"
+            android:layout_margin="8dp"
+            />
+
+        <View
+            android:layout_width="4dp"
+            android:layout_height="16dp"
+            android:layout_below="@id/minitrain"
+            android:layout_marginTop="1dp"
+
+            android:background="@color/colorEndGrd" />
+
+        <ImageView
+
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignLeft="@+id/minitrain"
+            android:layout_alignTop="@id/chosen_end_station"
+            android:layout_margin="8dp"
+            android:background="@drawable/big_train"
+
+            />
+
+        <TextView
+            android:id="@+id/chosen_start_station"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/minitrain"
+            android:layout_toRightOf="@id/minitrain"
+            android:layout_marginTop="40dp"
+            android:text="MINSK MAZOWIECKI"
+            android:textColor="@color/onPrimary"
+            android:textSize="22sp"
+
+            />
+        <TextView
+            android:id="@+id/chosen_end_station"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/chosen_start_station"
+            android:layout_below="@+id/chosen_start_station"
+            android:layout_marginTop="8dp"
+            android:text="Warszawa Srodmiescie"
+            android:textColor="@color/onPrimary"
+            android:textSize="30sp"
+
+
+            />
+    </RelativeLayout>
+
+</LinearLayout>

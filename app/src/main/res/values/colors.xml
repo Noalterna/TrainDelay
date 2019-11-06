@@ -6,4 +6,6 @@
     <color name="colorStartGrd">#6FC5FF</color>
     <color name="colorEndGrd">#006CC0</color>
     <color name="onPrimary">#FFFFFF</color>
+    <color name="colorSearchBtnStart">#38EF7D</color>
+    <color name="colorSearchBtnEnd">#098692</color>
 </resources>
