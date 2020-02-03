@@ -9,4 +9,12 @@
         <item>Sulejówek Miłosna</item>
         <item>Warszawa Śródmieście</item>
     </string-array>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="logo">Logo</string>
+    <string name="localization_image">localization image</string>
+    <string name="search_button">Search Button </string>
+    <string name="reverse_button">Reverse Button</string>
+
 </resources>

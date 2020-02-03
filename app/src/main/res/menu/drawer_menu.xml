@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
         <item
             android:id="@+id/nav_info"
             android:icon="@drawable/ic_info_outline_black_24dp"
-            android:title="O Train Delay" />
+            android:title="O aplikacji"
+            app:showAsAction="never"
+            />
+
 </menu>
