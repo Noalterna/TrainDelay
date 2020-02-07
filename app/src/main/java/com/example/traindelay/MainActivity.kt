@@ -11,11 +11,12 @@ import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.view.*
 
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener  {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, HomeFragment.SendStation  {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +41,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
+    fun changeFragment(fragment: Fragment){
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .commit()
+    }
+
     override fun onBackPressed() {
         val drawerLayout : DrawerLayout = findViewById(R.id.drawer_layout)
         if(drawerLayout.isDrawerOpen(GravityCompat.START)){
@@ -48,8 +55,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onBackPressed()
         }
     }
-    override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
 
+    override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
         when (menuItem.itemId) {
             R.id.nav_info -> {
             }
@@ -59,10 +66,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-  /*  override fun onWindowFocusChanged(hasFocus: Boolean) {
-        super.onWindowFocusChanged(hasFocus)
-//        val currentFragment = FragmentManager().findFragmentById()
- //       if( currentFragment instanceof IOnFocusListenable)
-    }*/
+    override fun sendData(station: String) {
+        val bundle = Bundle()
+        bundle.putString("inputStartStation", station)
+
+        val connectionsFragment = ConnectionsFragment()
+        connectionsFragment.arguments = bundle
+
+        this.supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, connectionsFragment)
+            .addToBackStack(null)
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+            .commit()
+
+    }
 
 }
