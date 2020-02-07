@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#2E9BE4</color>
+    <color name="colorPrimary">#FFFFFF</color>
     <color name="colorPrimaryDark">#2E9BE4</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorStartGrd">#6FC5FF</color>
     <color name="colorEndGrd">#006CC0</color>
     <color name="onPrimary">#FFFFFF</color>
-    <color name="colorSearchBtnStart">#38EF7D</color>
-    <color name="colorSearchBtnEnd">#098692</color>
+    <color name="onPrimaryDark">#2E9BE4</color>
+    <color name="colorHour">#0081D8</color>
+    <color name="colorKM">#82D146</color>
+    <color name="colorSKM">#E94D26</color>
+    <color name="colorIC">#FF9D1D</color>
 </resources>
