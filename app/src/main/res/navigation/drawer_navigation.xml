@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/drawer_navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.traindelay.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_connectionsFragment"
+            app:destination="@id/connectionsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/connectionsFragment"
+        android:name="com.example.traindelay.ConnectionsFragment"
+        android:label="ConnectionsFragment" >
+        <argument
+            android:name="startStationName"
+            app:argType="string" />
+        <argument
+            android:name="endStationName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@id/nav_about"
+        android:name="com.example.traindelay.AboutFragment"
+        android:label="AboutFragment" />
+</navigation>

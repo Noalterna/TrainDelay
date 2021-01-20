@@ -7,96 +7,62 @@
     android:clipChildren="false"
     >
     <RelativeLayout
+        android:id="@+id/stationTextViewsContainer"
         android:layout_width="match_parent"
         android:layout_height="104dp"
         android:background="@color/colorPrimaryDark"
         android:gravity="center_vertical"
         >
-        <TextView
-            android:id="@+id/startStationTextView"
+        <GridLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="48dp"
-            android:layout_marginStart="48dp"
-            android:layout_marginBottom="8dp"
-            android:gravity="center_horizontal"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:text="@string/no_station"
-            android:textColor="@color/onPrimary"
-            android:textSize="18sp"
-            />
-
-        <TextView
-            android:id="@+id/endStationTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_below="@+id/startStationTextView"
-            android:layout_alignLeft="@+id/startStationTextView"
-            android:layout_alignStart="@+id/startStationTextView"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:text="@string/no_station"
-            android:textColor="@color/onPrimary"
-            android:textSize="22sp" />
-    </RelativeLayout>
-    <GridLayout
-        android:id="@+id/ConnectionDataBox"
-        android:layout_width="match_parent"
-        android:layout_height="128dp"
-        android:background="@drawable/border_shadow"
-        android:columnCount="3"
-        android:rowCount="2"
-        android:gravity="center">
-
-        <TextView
-            android:id="@+id/departureHour"
-            android:layout_width="128dp"
-            android:layout_height="wrap_content"
-            android:layout_columnSpan="2"
-            android:layout_marginStart="24dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="8dp"
-            android:text="12:40"
-            android:textColor="@color/colorHour"
-            android:textSize="44sp"
-            app:fontFamily="@font/roboto_medium" />
-
+            android:columnCount="2"
+            android:layout_margin="16dp"
+            android:alignmentMode="alignBounds">
+            <ImageView
+                android:id="@+id/miniTrain_image"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/mini_train"
+                />
             <TextView
-                android:id="@+id/delayInMinutes"
+                android:id="@+id/startStationTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="(+10 min)"
-                android:textColor="@color/colorAccent"
-                android:textSize="24sp"
-                app:fontFamily="@font/kreon" />
-
-            <TextView
-                android:id="@+id/carrierIcon"
-                android:layout_width="48dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="4dp"
-                android:background="@color/colorSKM"
-                android:padding="8dp"
-                android:text="SKM"
-                android:textAlignment="center"
-                android:textColor="@color/onPrimary"
-                android:fontFamily="@font/roboto"/>
-
-            <TextView
-                android:id="@+id/trainRoute"
-                android:layout_columnSpan="2"
-                android:layout_width="304dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:gravity="center_horizontal"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="4dp"
-                android:text="@string/noData"
-                android:textColor="#B7B7B7"
-                android:textSize="16sp"
-                app:fontFamily="@font/roboto" />
-    </GridLayout>
+                android:layout_marginStart="16dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/no_station"
+                android:textColor="@color/onPrimary"
+                android:textSize="18sp"
+                />
+            <ImageView
+                android:id="@+id/bigTrain_image"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                app:srcCompat="@drawable/big_train" />
+            <TextView
+                android:id="@+id/endStationTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="@string/no_station"
+                android:textColor="@color/onPrimary"
+                android:textSize="22sp"
+                />
+        </GridLayout>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/DataBoxParent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+    </RelativeLayout>
 </LinearLayout>

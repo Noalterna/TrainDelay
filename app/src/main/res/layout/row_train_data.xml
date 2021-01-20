@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/connectionDataBox"
+    android:layout_width="match_parent"
+    android:layout_height="128dp"
+    android:background="@drawable/border_shadow"
+    android:columnCount="3"
+    android:gravity="center"
+    android:rowCount="2"
+    android:paddingBottom="16dp">
+
+    <TextView
+        android:id="@+id/departureHour"
+        android:layout_width="128dp"
+        android:layout_height="wrap_content"
+        android:layout_row="0"
+        android:layout_column="0"
+        android:layout_columnSpan="2"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="8dp"
+        android:text="12:30"
+        android:textColor="@color/colorHour"
+        android:textSize="44sp"
+        app:fontFamily="@font/pt_serif_bold" />
+
+    <TextView
+        android:id="@+id/delayInMinutes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="0"
+        android:layout_column="2"
+        android:text="(+10 min)"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        app:fontFamily="@font/bitter" />
+
+    <TextView
+        android:id="@+id/carrierIcon"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/colorSKM"
+        android:fontFamily="@font/roboto"
+        android:padding="8dp"
+        android:text="SKM"
+        android:textColor="@color/onPrimary" />
+
+    <TextView
+        android:id="@+id/trainRoute"
+        android:layout_width="304dp"
+        android:layout_height="wrap_content"
+        android:layout_columnSpan="2"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/noData"
+        android:textColor="#B7B7B7"
+        android:textSize="16sp"
+        app:fontFamily="@font/roboto" />
+</GridLayout>
