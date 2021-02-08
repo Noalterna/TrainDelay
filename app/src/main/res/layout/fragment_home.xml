@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorPrimary">
-
     <RelativeLayout
         android:id="@+id/stations_input_container"
         android:layout_width="match_parent"

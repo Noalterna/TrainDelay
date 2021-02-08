@@ -8,13 +8,17 @@
         android:name="com.example.traindelay.HomeFragment"
         android:label="HomeFragment" >
         <action
-            android:id="@+id/action_homeFragment_to_connectionsFragment"
-            app:destination="@id/connectionsFragment" />
+            android:id="@+id/action_homeFragment_to_routeFragment"
+            app:destination="@id/routeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/connectionsFragment"
-        android:name="com.example.traindelay.ConnectionsFragment"
-        android:label="ConnectionsFragment" >
+        android:id="@id/nav_about"
+        android:name="com.example.traindelay.AboutFragment"
+        android:label="AboutFragment" />
+    <fragment
+        android:id="@+id/routeFragment"
+        android:name="com.example.traindelay.RouteFragment"
+        android:label="RouteFragment" >
         <argument
             android:name="startStationName"
             app:argType="string" />
@@ -22,8 +26,4 @@
             android:name="endStationName"
             app:argType="string" />
     </fragment>
-    <fragment
-        android:id="@id/nav_about"
-        android:name="com.example.traindelay.AboutFragment"
-        android:label="AboutFragment" />
 </navigation>
