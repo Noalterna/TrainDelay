@@ -1,21 +1,25 @@
 package com.example.traindelay
+
+import android.content.Context
+import android.content.Context.INPUT_METHOD_SERVICE
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.ImageButton
-//import android.widget.*
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.traindelay.model.Station
+import com.example.traindelay.databinding.FragmentHomeBinding
 import com.example.traindelay.repository.Repository
+import java.lang.Exception
 
 class HomeFragment : Fragment() {
+    private lateinit var binding: FragmentHomeBinding
     private lateinit var homeViewModel: HomeViewModel
 
     override fun onCreateView(
@@ -24,8 +28,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view: View = inflater.inflate(R.layout.fragment_home, container, false)
-        val startStationAutoCompTV: AutoCompleteTextView = view.findViewById(R.id.start_station)
-        val endStationAutoCompTV: AutoCompleteTextView = view.findViewById(R.id.end_station)
+        binding = FragmentHomeBinding.bind(view)
 
         // API
         val repository = Repository()
@@ -40,25 +43,26 @@ class HomeFragment : Fragment() {
             ArrayAdapter( requireActivity(), android.R.layout.simple_dropdown_item_1line,
                 listOfStations)
                 .also { adapter ->
-                    startStationAutoCompTV.setAdapter(adapter)
-                    endStationAutoCompTV.setAdapter(adapter)
+                    binding.startStation.setAdapter(adapter)
+                    binding.endStation.setAdapter(adapter)
                 }
             Log.d("RESPONSE: ", response[0].name) //TODO: delete this
         })
 
-        val btnSearch = view.findViewById(R.id.search_btn) as ImageButton
-        btnSearch.setOnClickListener{
+        binding.searchBtn.setOnClickListener{
             val directions = HomeFragmentDirections.actionHomeFragmentToRouteFragment(
-                startStationAutoCompTV.text.toString(),
-                endStationAutoCompTV.text.toString())
+                binding.startStation.text.toString(),
+                binding.endStation.text.toString())
+            it.hideKeyboard()
             findNavController().navigate(directions)
+
         }
 
         return view
     }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    fun View.hideKeyboard(){
+        val inputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(windowToken,0)
 
     }
 }

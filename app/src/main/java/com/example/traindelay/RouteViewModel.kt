@@ -4,24 +4,23 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.traindelay.model.Station
+import com.example.traindelay.model.Route
 import com.example.traindelay.repository.Repository
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
-class HomeViewModel(private val repository: Repository): ViewModel() {
-    val _response = MutableLiveData<List<Station>>()
+class RouteViewModel(private val repository: Repository): ViewModel() {
+    val listOfRoutes = MutableLiveData<List<Route>>()
 
-    fun getStations(){
+    fun getRoutes(from:String, to: String){
         viewModelScope.launch {
             try {
-                val listResult = repository.getStations()
-                _response.value = listResult
+                val listResult = repository.getRoutes(from, to)
+                listOfRoutes.value = listResult
             }
             catch (e: Exception){
-                Log.d("Failure", e.message.toString())
+                Log.e("Failure", e.message.toString())
             }
         }
     }
-
 }

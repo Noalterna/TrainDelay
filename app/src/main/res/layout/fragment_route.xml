@@ -4,68 +4,60 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:clipChildren="false"
     >
-    <RelativeLayout
-        android:id="@+id/stationTextViewsContainer"
+    <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="104dp"
+        android:alignmentMode="alignBounds"
         android:background="@color/colorPrimaryDark"
+        android:columnCount="2"
+        android:rowCount="2"
         android:gravity="center_vertical"
-        >
-        <GridLayout
+        android:padding="16dp">
+        <ImageView
+            android:id="@+id/miniTrain_image"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/mini_train"
+            android:contentDescription="icon of a small train"/>
+
+        <TextView
+            android:id="@+id/startStationTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:columnCount="2"
-            android:layout_margin="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:alignmentMode="alignBounds">
-            <ImageView
-                android:id="@+id/miniTrain_image"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center"
-                app:srcCompat="@drawable/mini_train"
-                />
-            <TextView
-                android:id="@+id/startStationTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:text="Gdynia Wzgórze Sw. Maksymiliana"
-                android:textColor="@color/onPrimary"
-                android:textSize="18sp"
-                />
-            <ImageView
-                android:id="@+id/bigTrain_image"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="8dp"
-                app:srcCompat="@drawable/big_train" />
-            <TextView
-                android:id="@+id/endStationTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:text="Gdynia Wzgórze Sw.Maksymiliana"
-                android:textColor="@color/onPrimary"
-                android:textSize="22sp"
-                android:autoSizeTextType="uniform"
-                app:autoSizeTextType="uniform"
-                android:ellipsize="end"
-                />
-        </GridLayout>
+            android:gravity="center_horizontal"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:text="Gdynia Wzgórze Sw. Maksymiliana"
+            android:textColor="@color/onPrimary"
+            android:textSize="18sp" />
 
-    </RelativeLayout>
+        <ImageView
+            android:id="@+id/bigTrain_image"
+            android:layout_width="28dp"
+            android:layout_height="29dp"
+            android:layout_gravity="top"
+            android:layout_marginTop="8dp"
+            android:contentDescription="icon of a big train"
+            app:srcCompat="@drawable/big_train" />
+
+        <TextView
+            android:id="@+id/endStationTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autoSizeTextType="uniform"
+            android:ellipsize="end"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:text="Gdynia Wzgórze Sw.Maksymiliana"
+            android:textColor="@color/onPrimary"
+            android:textSize="22sp"
+            app:autoSizeTextType="uniform" />
+    </GridLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RoutesRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
     </androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>
