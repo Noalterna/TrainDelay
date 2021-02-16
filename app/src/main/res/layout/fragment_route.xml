@@ -29,7 +29,7 @@
             android:gravity="center_horizontal"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            android:text="Gdynia Wzgórze Sw. Maksymiliana"
+            android:text="@string/noData"
             android:textColor="@color/onPrimary"
             android:textSize="18sp" />
 
@@ -46,18 +46,28 @@
             android:id="@+id/endStationTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:autoSizeTextType="uniform"
             android:ellipsize="end"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            android:text="Gdynia Wzgórze Sw.Maksymiliana"
+            android:text="@string/noData"
             android:textColor="@color/onPrimary"
             android:textSize="22sp"
             app:autoSizeTextType="uniform" />
     </GridLayout>
-    <androidx.recyclerview.widget.RecyclerView
+   <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RoutesRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+       android:visibility="visible">
     </androidx.recyclerview.widget.RecyclerView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/empty_view"
+        android:visibility="gone"
+        android:text="@string/noRoute"
+        android:textSize="22sp"
+        android:textAlignment="center"
+        android:gravity="center"
+        />
 </LinearLayout>

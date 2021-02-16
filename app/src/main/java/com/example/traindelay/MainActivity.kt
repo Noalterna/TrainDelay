@@ -2,6 +2,8 @@ package com.example.traindelay
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.KeyEvent
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -39,6 +41,7 @@ class MainActivity : AppCompatActivity(){
         return findNavController(R.id.fragment_container).navigateUp(appBarConfig)
                 || super.onSupportNavigateUp()
     }
+
     override fun onBackPressed() {
         val drawerLayout : DrawerLayout = findViewById(R.id.drawer_layout)
         if(drawerLayout.isDrawerOpen(GravityCompat.START)){

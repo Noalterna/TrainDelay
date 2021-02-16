@@ -19,5 +19,12 @@
     <string name="title_activity_connections_fragment">ConnectionsFragment</string>
     <string name="action_settings">Settings</string>
     <string name="noData">Brak danych</string>
+    <string name="KM">KM</string>
+    <string name="SKM">SKM</string>
+    <string name="IC">IC</string>
+    <string name="noRoute">Nie ma bliskiego połączenia.</string>
+    <string name="errorOperator">XX</string>
+    <string name="wrongHour">XX:XX</string>
+    <string name="wrongDelay">(+X min)</string>
 
 </resources>

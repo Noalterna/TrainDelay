@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -31,6 +32,7 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.bind(view)
 
         // API
+        val listOfStations2 = mutableListOf<String>()
         val repository = Repository()
         val viewModelFactory = HomeViewModelFactory(repository)
         homeViewModel = ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
@@ -39,6 +41,7 @@ class HomeFragment : Fragment() {
             val listOfStations = mutableListOf<String>()
             response.forEach {
                 listOfStations.add(it.name)
+                listOfStations2.add(it.name)
             }
             ArrayAdapter( requireActivity(), android.R.layout.simple_dropdown_item_1line,
                 listOfStations)
@@ -46,23 +49,43 @@ class HomeFragment : Fragment() {
                     binding.startStation.setAdapter(adapter)
                     binding.endStation.setAdapter(adapter)
                 }
-            Log.d("RESPONSE: ", response[0].name) //TODO: delete this
+            Log.d("RESPONSE: ", response[0].name)
         })
 
-        binding.searchBtn.setOnClickListener{
-            val directions = HomeFragmentDirections.actionHomeFragmentToRouteFragment(
-                binding.startStation.text.toString(),
-                binding.endStation.text.toString())
+        binding.layoutContainer.setOnClickListener{
             it.hideKeyboard()
-            findNavController().navigate(directions)
-
         }
 
+        binding.reverseButton.setOnClickListener{
+            val tmp = binding.startStation.text
+            binding.startStation.text = binding.endStation.text
+            binding.endStation.text = tmp
+        }
+
+        binding.searchBtn.setOnClickListener{
+            it.hideKeyboard()
+            val isInputCorrect = verifyStationName(
+                binding.startStation.text.toString(),
+                binding.endStation.text.toString(),
+                listOfStations2)
+            Log.e("lista", listOfStations2.size.toString())
+            if(isInputCorrect){
+                val directions = HomeFragmentDirections.actionHomeFragmentToRouteFragment(
+                    binding.startStation.text.toString(),
+                    binding.endStation.text.toString())
+                findNavController().navigate(directions)
+            }
+            else Toast.makeText(activity, "Wybierz stację z listy", Toast.LENGTH_SHORT).show()
+        }
         return view
     }
+
     fun View.hideKeyboard(){
         val inputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(windowToken,0)
-
+    }
+    fun verifyStationName(from: String, to: String, list: List<String>): Boolean{
+        if(list.contains(from) && list.contains(to)) return true
+        return false
     }
 }
