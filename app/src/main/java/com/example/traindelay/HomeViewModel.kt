@@ -6,21 +6,22 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.traindelay.model.Station
 import com.example.traindelay.repository.Repository
+import com.example.traindelay.utils.Resource
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
 class HomeViewModel(private val repository: Repository): ViewModel() {
-    val _response = MutableLiveData<List<Station>>()
+    val stations = MutableLiveData<Resource<List<Station>>>()
+    private val exceptionHandler = CoroutineExceptionHandler{_, exception ->
+        stations.postValue(Resource.error(exception.message.toString(), null))
+    }
+
 
     fun getStations(){
-        viewModelScope.launch {
-            try {
-                val listResult = repository.getStations()
-                _response.value = listResult
-            }
-            catch (e: Exception){
-                Log.d("Failure", e.message.toString())
-            }
+        viewModelScope.launch(exceptionHandler) {
+                val listOfStations = repository.getStations()
+                stations.postValue(Resource.success(listOfStations))
         }
     }
 

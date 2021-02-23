@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.traindelay.databinding.FragmentHomeBinding
 import com.example.traindelay.repository.Repository
+import com.example.traindelay.utils.Status
 import java.lang.Exception
 
 class HomeFragment : Fragment() {
@@ -32,43 +33,42 @@ class HomeFragment : Fragment() {
         binding = FragmentHomeBinding.bind(view)
 
         // API
-        val listOfStations2 = mutableListOf<String>()
+        val listOfStations = mutableListOf<String>()
         val repository = Repository()
         val viewModelFactory = HomeViewModelFactory(repository)
         homeViewModel = ViewModelProvider(this, viewModelFactory).get(HomeViewModel::class.java)
         homeViewModel.getStations()
-        homeViewModel._response.observe(viewLifecycleOwner, Observer { response ->
-            val listOfStations = mutableListOf<String>()
-            response.forEach {
-                listOfStations.add(it.name)
-                listOfStations2.add(it.name)
-            }
-            ArrayAdapter( requireActivity(), android.R.layout.simple_dropdown_item_1line,
-                listOfStations)
-                .also { adapter ->
-                    binding.startStation.setAdapter(adapter)
-                    binding.endStation.setAdapter(adapter)
+        homeViewModel.stations.observe(viewLifecycleOwner, Observer {
+            when(it.status){
+                Status.SUCCESS -> {
+                    it.data?.let { stations ->
+                        stations.forEach {
+                            listOfStations.add(it.name)
+                        }}
+                    ArrayAdapter( requireActivity(), android.R.layout.simple_dropdown_item_1line,
+                        listOfStations)
+                        .also { adapter ->
+                            binding.startStation.setAdapter(adapter)
+                            binding.endStation.setAdapter(adapter)
+                        }
                 }
-            Log.d("RESPONSE: ", response[0].name)
+                Status.ERROR -> {
+
+                    Toast.makeText(activity,"Coś poszło nie tak", Toast.LENGTH_LONG).show()
+                    Log.e("Failure", it.msg.toString())
+                }
+            }
         })
 
         binding.layoutContainer.setOnClickListener{
-            it.hideKeyboard()
-        }
+            it.hideKeyboard()}
 
         binding.reverseButton.setOnClickListener{
-            val tmp = binding.startStation.text
-            binding.startStation.text = binding.endStation.text
-            binding.endStation.text = tmp
-        }
+            reverseTextViews() }
 
         binding.searchBtn.setOnClickListener{
             it.hideKeyboard()
-            val isInputCorrect = verifyStationName(
-                binding.startStation.text.toString(),
-                binding.endStation.text.toString(),
-                listOfStations2)
-            Log.e("lista", listOfStations2.size.toString())
+            val isInputCorrect = verifyStationName(listOfStations)
             if(isInputCorrect){
                 val directions = HomeFragmentDirections.actionHomeFragmentToRouteFragment(
                     binding.startStation.text.toString(),
@@ -77,6 +77,7 @@ class HomeFragment : Fragment() {
             }
             else Toast.makeText(activity, "Wybierz stację z listy", Toast.LENGTH_SHORT).show()
         }
+
         return view
     }
 
@@ -84,8 +85,17 @@ class HomeFragment : Fragment() {
         val inputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.hideSoftInputFromWindow(windowToken,0)
     }
-    fun verifyStationName(from: String, to: String, list: List<String>): Boolean{
+    private fun verifyStationName(list: List<String>): Boolean{
+        val from = binding.startStation.text.toString()
+        val to = binding.endStation.text.toString()
+
         if(list.contains(from) && list.contains(to)) return true
         return false
     }
+    private fun reverseTextViews(){
+        val tmp = binding.startStation.text
+        binding.startStation.text = binding.endStation.text
+        binding.endStation.text = tmp
+    }
+
 }

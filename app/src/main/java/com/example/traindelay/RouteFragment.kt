@@ -17,7 +17,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.traindelay.adapter.RouteAdapter
 import com.example.traindelay.databinding.FragmentRouteBinding
+import com.example.traindelay.model.Route
 import com.example.traindelay.repository.Repository
+import com.example.traindelay.utils.Status
 import org.w3c.dom.Text
 
 class RouteFragment :Fragment() {
@@ -41,7 +43,6 @@ class RouteFragment :Fragment() {
         binding.endStationTextView.text = args.endStationName
 
         val recyclerView: RecyclerView = binding.RoutesRecyclerView
-        val emptyView = binding.emptyView
 
         recyclerView.layoutManager = LinearLayoutManager(activity?.applicationContext)
         recyclerView.setHasFixedSize(true)
@@ -53,18 +54,26 @@ class RouteFragment :Fragment() {
         val viewModelFactory = RouteViewModelFactory(repository)
         routeViewModel = ViewModelProvider(this, viewModelFactory).get(RouteViewModel::class.java)
         routeViewModel.getRoutes(args.startStationName,args.endStationName)
-        routeViewModel.listOfRoutes.observe(viewLifecycleOwner, Observer { routes ->
-
-             Log.e("Empty?", routes.isEmpty().toString())
-              if (routes.isEmpty()){
-                  recyclerView.visibility = View.GONE
-                  emptyView.visibility = View.VISIBLE
-               }
-              else{
-                  adapter.setRouteCards(routes)
-                  emptyView.visibility = View.GONE
-                  recyclerView.visibility = View.VISIBLE
-               }
+        routeViewModel.listOfRoutes.observe(viewLifecycleOwner, Observer {
+                when(it.status){
+                    Status.SUCCESS -> {
+                        it.data?.let { routes -> setupData(routes, adapter)}
+                    }
+                    Status.ERROR ->{
+                        Toast.makeText(activity, it.msg, Toast.LENGTH_LONG).show()
+                    }
+                }
         })
     }
+        private fun setupData(routes: List<Route>, adapter: RouteAdapter){
+            if(routes.isEmpty()){
+                binding.RoutesRecyclerView.visibility = View.GONE
+                binding.emptyView.visibility = View.VISIBLE
+            }
+            else{
+                adapter.setRouteCards(routes)
+                binding.emptyView.visibility = View.GONE
+                binding.RoutesRecyclerView.visibility = View.VISIBLE
+            }
+        }
 }
