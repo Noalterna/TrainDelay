@@ -8,7 +8,15 @@
     <color name="onPrimary">#FFFFFF</color>
     <color name="onPrimaryDark">#2E9BE4</color>
     <color name="colorHour">#0081D8</color>
-    <color name="colorKM">#82D146</color>
-    <color name="colorSKM">#E94D26</color>
-    <color name="colorIC">#FF9D1D</color>
+    <color name="colorKM">#3fac1b</color>
+    <color name="colorSKMWA">#ff1100</color>
+    <color name="colorIC">#ec6428</color>
+    <color name="colorGreyedOut">#B7B7B7</color>
+    <color name="colorPOLREGIO">#e50000</color>
+    <color name="colorKD">#2a2a28</color>
+    <color name="colorKŚ">#00a4e3</color>
+    <color name="colorArriva">#0a8b9c</color>
+    <color name="colorKW">#9e2125</color>
+    <color name="colorŁKA">#adb3b3</color>
+    <color name="colorSKMT">#034c70</color>
 </resources>

@@ -7,7 +7,6 @@
     android:layout_marginHorizontal="8dp"
     >
     <GridLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/routeDataBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,7 +15,6 @@
         android:gravity="center"
         android:rowCount="2"
         android:paddingBottom="16dp">
-
         <TextView
             android:id="@+id/departureHour"
             android:layout_width="wrap_content"
@@ -32,8 +30,7 @@
             android:text="@string/wrongHour"
             android:textColor="@color/colorHour"
             android:textSize="28sp"
-            app:fontFamily="@font/pt_serif_bold" />
-
+            card_view:fontFamily="@font/pt_serif_bold" />
         <TextView
             android:id="@+id/delayInMinutes"
             android:layout_width="wrap_content"
@@ -43,37 +40,42 @@
             android:layout_marginLeft="4dp"
             android:layout_marginStart="4dp"
             android:text="@string/wrongDelay"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/colorGreyedOut"
             android:textSize="16sp"
-            app:fontFamily="@font/bitter"
+            card_view:fontFamily="@font/bitter"
  />
-
         <TextView
-            android:id="@+id/carrierIcon"
+            android:id="@+id/operatorIcon"
             android:layout_width="48dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="4dp"
-            android:background="@color/colorSKM"
-            app:fontFamily="@font/roboto"
-            android:padding="8dp"
-            android:text="@string/errorOperator"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:textColor="@color/onPrimary" />
+            android:layout_gravity="center"
+            android:background="@color/colorAccent"
 
+            android:gravity="center"
+            android:padding="4dp"
+            android:text="@string/errorOperator"
+            android:textSize="10sp"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/onPrimary"
+            card_view:fontFamily="@font/roboto_medium" />
         <TextView
             android:id="@+id/trainRoute"
-            android:layout_width="304dp"
+            android:layout_width="312dp"
             android:layout_height="wrap_content"
             android:layout_columnSpan="2"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="4dp"
+            android:layout_gravity="center_vertical"
             android:text="@string/noData"
-            android:textColor="#B7B7B7"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/colorGreyedOut"
             android:textSize="14sp"
-            app:fontFamily="@font/roboto" />
+            card_view:fontFamily="@font/roboto" />
     </GridLayout>
 </androidx.cardview.widget.CardView>

@@ -9,14 +9,13 @@ import com.example.traindelay.repository.Repository
 import com.example.traindelay.utils.Resource
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
-import java.lang.Exception
 
 class HomeViewModel(private val repository: Repository): ViewModel() {
     val stations = MutableLiveData<Resource<List<Station>>>()
     private val exceptionHandler = CoroutineExceptionHandler{_, exception ->
         stations.postValue(Resource.error(exception.message.toString(), null))
+        Log.e("Wyjatek",exception.toString())
     }
-
 
     fun getStations(){
         viewModelScope.launch(exceptionHandler) {
@@ -24,5 +23,4 @@ class HomeViewModel(private val repository: Repository): ViewModel() {
                 stations.postValue(Resource.success(listOfStations))
         }
     }
-
 }

@@ -3,28 +3,29 @@
     <string name="start_station">Stacja Początkowa</string>
     <string name="end_station">Stacja Końcowa</string>
     <string name="no_station">Nie ma takiej stacji</string>
-    <string-array name="stations">
-        <item>Mińsk Mazowiecki</item>
-        <item>Piaseczno</item>
-        <item>Sulejówek Miłosna</item>
-        <item>Warszawa Śródmieście</item>
-    </string-array>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
     <string name="logo">Logo</string>
     <string name="localization_image">localization image</string>
-    <string name="search_button">Search Button </string>
+    <string name="search_button">Search Button</string>
     <string name="reverse_button">Reverse Button</string>
     <string name="title_activity_connections_fragment">ConnectionsFragment</string>
     <string name="action_settings">Settings</string>
     <string name="noData">Brak danych</string>
-    <string name="KM">KM</string>
-    <string name="SKM">SKM</string>
-    <string name="IC">IC</string>
-    <string name="noRoute">Nie ma bliskiego połączenia.</string>
+    <string name="noRoute">Brak połączenia w najbliższym czasie. Spróbuj ponownie później.</string>
     <string name="errorOperator">XX</string>
-    <string name="wrongHour">XX:XX</string>
-    <string name="wrongDelay">(+X min)</string>
+    <string name="wrongHour">--:--</string>
+    <string name="wrongDelay">+ (— min)</string>
+
+    <string name="KM">KM</string>
+    <string name="SKMW">SKMW</string>
+    <string name="SKMT">SKMT</string>
+    <string name="IC">IC</string>
+    <string name="POLREGIO">REG</string>
+    <string name="KD">KD</string>
+    <string name="KŚ">KŚ</string>
+    <string name="KW">KW</string>
+    <string name="Arriva">AR</string>
+    <string name="ŁKA">ŁKA</string>
 
 </resources>

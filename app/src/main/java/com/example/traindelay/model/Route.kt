@@ -6,5 +6,6 @@ data class Route(
     val departure: String,
     val id: Int,
     val name: String,
-    val operator: String
+    val operator: String,
+    val relation: List<String>
 )
