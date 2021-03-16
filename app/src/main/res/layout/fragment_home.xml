@@ -14,7 +14,6 @@
         android:gravity="center"
         android:orientation="vertical"
         android:padding="24dp">
-
         <RelativeLayout
             android:id="@+id/text_box_start"
             android:layout_width="match_parent"
@@ -27,7 +26,6 @@
             android:gravity="center"
             android:paddingTop="8dp"
             android:paddingBottom="8dp">
-
             <AutoCompleteTextView
                 android:id="@+id/start_station"
                 android:layout_width="match_parent"
@@ -42,7 +40,6 @@
                 android:paddingEnd="60dp"
                 android:paddingRight="60dp"
                 app:fontFamily="sans-serif" />
-
             <ImageButton
                 android:layout_width="24dp"
                 android:layout_height="24dp"
@@ -55,9 +52,7 @@
                 android:contentDescription="@string/localization_image"
                 android:scaleType="fitXY"
                 android:src="@drawable/location" />
-
         </RelativeLayout>
-
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="48dp"
@@ -68,7 +63,6 @@
             android:gravity="center"
             android:paddingTop="8dp"
             android:paddingBottom="8dp">
-
             <AutoCompleteTextView
                 android:id="@+id/end_station"
                 android:layout_width="match_parent"
@@ -84,7 +78,6 @@
                 android:paddingRight="60dp"
                 android:paddingEnd="60dp"
                 app:fontFamily="sans-serif" />
-
             <ImageButton
                 android:id="@+id/reverseButton"
                 android:layout_width="24dp"
@@ -98,10 +91,18 @@
                 android:scaleType="fitXY"
                 android:src="@drawable/reverse"
                 android:contentDescription="@string/reverse_button"/>
-
         </RelativeLayout>
     </RelativeLayout>
-
+    <TextView
+        android:id="@+id/home_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:text="@string/error"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:visibility="gone"/>
     <ImageButton
         android:id="@+id/search_btn"
         android:layout_width="100dp"
@@ -113,5 +114,4 @@
         android:scaleType="fitCenter"
         android:src="@drawable/search_button_sel"
         android:onClick="onSearch"/>
-
 </LinearLayout>

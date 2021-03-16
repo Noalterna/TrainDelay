@@ -13,6 +13,9 @@ import com.example.traindelay.adapter.RouteAdapter
 import com.example.traindelay.databinding.FragmentRouteBinding
 import com.example.traindelay.model.Route
 import com.example.traindelay.repository.Repository
+import com.example.traindelay.utils.ErrorEntity
+import com.example.traindelay.utils.Helper
+import com.example.traindelay.utils.Resource
 import com.example.traindelay.utils.Status
 
 class RouteFragment :Fragment() {
@@ -53,20 +56,21 @@ class RouteFragment :Fragment() {
     }
     private fun routesFragmentObserver(adapter: RouteAdapter){
         routeViewModel.listOfRoutes.observe(viewLifecycleOwner, {
-            when(it.status){
-                Status.SUCCESS -> {
+            when(it){
+                is Resource.Success -> {
                     if(binding.swipeRefreshContainer.isRefreshing){
                         binding.swipeRefreshContainer.isRefreshing = false
                     }
-                    it.data?.let { routes -> setupData(routes, adapter)}
+                    showDataOrEmptyMsg(it.data, adapter)
                 }
-                Status.ERROR -> {
-                    Toast.makeText(activity, it.msg, Toast.LENGTH_LONG).show()
+                is Resource.Error -> {
+                    binding.RoutesRecyclerView.visibility = View.GONE
+                    Helper.showErrorMsg(it.error, binding.emptyView)
                 }
             }
         })
     }
-        private fun setupData(routes: List<Route>, adapter: RouteAdapter){
+        private fun showDataOrEmptyMsg(routes: List<Route>, adapter: RouteAdapter){
             if(routes.isEmpty()){
                 binding.RoutesRecyclerView.visibility = View.GONE
                 binding.emptyView.visibility = View.VISIBLE

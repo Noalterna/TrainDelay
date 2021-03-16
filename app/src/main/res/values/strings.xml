@@ -12,10 +12,11 @@
     <string name="title_activity_connections_fragment">ConnectionsFragment</string>
     <string name="action_settings">Settings</string>
     <string name="noData">Brak danych</string>
-    <string name="noRoute">Brak połączenia w najbliższym czasie. Spróbuj ponownie później.</string>
+    <string name="noRoute">Brak pociągów w najbliższym czasie. Spróbuj ponownie później.</string>
     <string name="errorOperator">XX</string>
     <string name="wrongHour">--:--</string>
     <string name="wrongDelay">+ (— min)</string>
+    <string name="error">Błąd</string>
 
     <string name="KM">KM</string>
     <string name="SKMW">SKMW</string>

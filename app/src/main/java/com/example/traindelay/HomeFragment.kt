@@ -1,17 +1,21 @@
 package com.example.traindelay
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.traindelay.databinding.FragmentHomeBinding
 import com.example.traindelay.repository.Repository
+import com.example.traindelay.utils.ErrorEntity
 import com.example.traindelay.utils.Helper
+import com.example.traindelay.utils.Resource
 import com.example.traindelay.utils.Status
 
 class HomeFragment : Fragment() {
@@ -52,9 +56,10 @@ class HomeFragment : Fragment() {
 
     private fun homeViewModelObserver(listOfStations: MutableList<String>, view: View) : MutableList<String> {
         homeViewModel.stations.observe(viewLifecycleOwner, {
-            when(it.status){
-                Status.SUCCESS -> {
-                    it.data?.let { stations ->
+            when(it){
+                is Resource.Success -> {
+                    binding.homeError.visibility = View.GONE
+                    it.data.let { stations ->
                         listOfStations.clear()
                         stations.forEach { station -> listOfStations.add(station.name)}
                     }
@@ -65,9 +70,9 @@ class HomeFragment : Fragment() {
                             binding.endStation.setAdapter(adapter)
                         }
                 }
-                Status.ERROR -> {
+                is Resource.Error -> {
                     Helper.hideKeyboard(view)
-                    Toast.makeText(activity,it.msg, Toast.LENGTH_LONG).show()
+                    Helper.showErrorMsg(it.error, binding.homeError)
                 }
             }
         })
