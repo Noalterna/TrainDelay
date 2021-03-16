@@ -3,7 +3,6 @@ package com.example.traindelay.api
 import com.example.traindelay.model.Route
 import com.example.traindelay.model.Station
 import retrofit2.http.GET
-import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiInterface {

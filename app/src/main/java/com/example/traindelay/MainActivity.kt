@@ -2,8 +2,6 @@ package com.example.traindelay
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.KeyEvent
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -12,12 +10,11 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-//import androidx.navigation.ui.*
 import com.example.traindelay.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(){
-    private lateinit var appBarConfig : AppBarConfiguration
-    private  lateinit var  binding :ActivityMainBinding
+class MainActivity : AppCompatActivity() {
+    private lateinit var appBarConfig: AppBarConfiguration
+    private  lateinit var  binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

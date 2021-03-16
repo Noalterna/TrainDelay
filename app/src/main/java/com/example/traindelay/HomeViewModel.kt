@@ -6,20 +6,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.traindelay.model.Station
 import com.example.traindelay.repository.Repository
-import com.example.traindelay.utils.ErrorEntity
 import com.example.traindelay.utils.ErrorHandler
 import com.example.traindelay.utils.Resource
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
-import retrofit2.HttpException
-import java.io.IOException
-import java.net.HttpURLConnection
 
 class HomeViewModel(private val repository: Repository): ViewModel() {
     val stations = MutableLiveData<Resource<List<Station>>>()
     private val exceptionHandler = CoroutineExceptionHandler{_, exception ->
         stations.postValue(Resource.Error(ErrorHandler.getError(exception)))
-        Log.e("Wyjatek",exception.toString())
+        Log.e("WyjatekHomeVM",exception.toString())
     }
 
     fun getStations(){

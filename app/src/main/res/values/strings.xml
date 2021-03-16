@@ -17,6 +17,7 @@
     <string name="wrongHour">--:--</string>
     <string name="wrongDelay">+ (— min)</string>
     <string name="error">Błąd</string>
+    <string name="chooseStationFromList">Wybierz stację z listy</string>
 
     <string name="KM">KM</string>
     <string name="SKMW">SKMW</string>

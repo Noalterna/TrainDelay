@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.annotation.VisibleForTesting
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.traindelay.R
@@ -58,11 +57,10 @@ class RouteAdapter: RecyclerView.Adapter<RouteAdapter.RouteHolder>() {
 
     override fun getItemCount() = routes.size
 
-    fun setRouteCards(routeCards: List<Route>){
+    fun addRoutes(routeCards: List<Route>){
         val sorted = routeCards.sortedBy {
             formatDateToHour(it.departure)?.plusMinutes(it.delay.toLong())}
         this.routes = sorted
-        notifyDataSetChanged()
     }
     private fun setTrainDelay(holder: RouteHolder, delay: String){
         if (delay.toInt() == 0) {

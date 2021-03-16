@@ -15,7 +15,7 @@ class RouteViewModel(private val repository: Repository): ViewModel() {
     val listOfRoutes = MutableLiveData<Resource<List<Route>>>()
     private val exceptionHandler = CoroutineExceptionHandler{_, exception ->
         listOfRoutes.postValue(Resource.Error(ErrorHandler.getError(exception)))
-        Log.e("Wyjatek",exception.toString())
+        Log.e("WyjatekRouteVM",exception.toString())
     }
     fun getRoutes(from:String, to: String){
         viewModelScope.launch(exceptionHandler) {
